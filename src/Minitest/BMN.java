@@ -1,5 +1,8 @@
 package Minitest;
 
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
 public class BMN {
     public int totalPrice(Book[] list) {
         int count = 0;
@@ -47,5 +50,4 @@ public class BMN {
         System.out.println("Số sách Fiction có giá nhỏ hơn 100 là "+count3 );
         return count3;
     }
-
 }
