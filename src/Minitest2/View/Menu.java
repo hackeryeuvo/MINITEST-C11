@@ -1,4 +1,6 @@
-package Minitest2;
+package Minitest2.View;
+
+import Minitest2.Controller.MaterialManager;
 
 import java.util.Scanner;
 
@@ -13,7 +15,8 @@ public class Menu {
             System.out.println("2.Thêm sản phẩm");
             System.out.println("3.Sửa sản phẩm");
             System.out.println("4.Xóa sản phẩm");
-            System.out.println("5.Thoát");
+            System.out.println("5.Tính giá chênh lệch sản phẩm thực tế ");
+            System.out.println("6.Thoát");
             choice=Integer.parseInt(scanner.nextLine());
             switch (choice){
                 case 1:
@@ -28,7 +31,9 @@ public class Menu {
                 case 4:
                     materialManager.deleteById(scanner);
                     break;
+                case 5:
+                    materialManager.getDifference();
             }
-        }while (choice!=5);
+        }while (choice!=6);
     }
 }

@@ -1,4 +1,6 @@
-package Minitest2;
+package Minitest2.Model;
+
+import Minitest2.Model.Material;
 
 import java.time.LocalDate;
 

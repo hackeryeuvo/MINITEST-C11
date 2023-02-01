@@ -1,4 +1,4 @@
-package Minitest2;
+package Minitest2.Model;
 
 import java.time.LocalDate;
 

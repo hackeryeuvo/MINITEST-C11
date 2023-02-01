@@ -1,8 +1,8 @@
-package Minitest2;
+package Minitest2.Model;
 
 import java.time.LocalDate;
 
-public class CrispyFlour extends Material  {
+public class CrispyFlour extends Material {
     public int quantity;
 
     @Override

@@ -1,11 +1,15 @@
-package Minitest2;
+package Minitest2.Controller;
+
+import Minitest2.Model.CrispyFlour;
+import Minitest2.Model.Material;
+import Minitest2.Model.Meat;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MaterialManager {
-     ArrayList<Material> list = new ArrayList<>();
+    ArrayList<Material> list = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
 
     public MaterialManager() {
@@ -74,7 +78,6 @@ public class MaterialManager {
     }
 
     public void fixById(Scanner scanner) {
-        boolean check = true;
         String id2;
         String name;
         LocalDate time = null;
@@ -83,57 +86,66 @@ public class MaterialManager {
         int weight;
         int month;
         String id;
-            System.out.println("Mời bạn nhập ID sản phẩm bạn muốn sửa");
-            id = scanner.nextLine();
-            for (Material p : list) {
-                if (id.equals(p.getId())) {
-                    if (p instanceof CrispyFlour) {
-                        System.out.println("Mời bạn nhập ID của sản phẩm sửa thành ");
-                        id2 = scanner.nextLine();
-                        System.out.println("Mời bạn nhập tên của sản phẩm sửa thành");
-                        name = scanner.nextLine();
-                        System.out.println("Mời bạn nhập thời gian hết hạn của sản phẩm sửa thành ");
-                        month = Integer.parseInt(scanner.nextLine());
-                        System.out.println("Mời bạn nhập giá của sản phẩm sửa thành");
-                        cost = Integer.parseInt(scanner.nextLine());
-                        System.out.println("Mời bạn nhập số lượng của sản phẩm sửa thành");
-                        quantity = Integer.parseInt(scanner.nextLine());
-                        p.setId(id2);
-                        p.setName(name);
-                        p.setManufacturingDate(time.now().minusMonths(month));
-                        p.setCost(cost);
-                        ((CrispyFlour) p).setQuantity(quantity);
-                    } else if (p instanceof Meat) {
-                        System.out.println("Mời bạn nhập ID của sản phẩm ");
-                        id2 = scanner.nextLine();
-                        System.out.println("Mời bạn nhập tên của sản phẩm");
-                        name = scanner.nextLine();
-                        System.out.println("Mời bạn nhập thời gian hết hạn của sản phẩm ");
-                        month = Integer.parseInt(scanner.nextLine());
-                        System.out.println("Mời bạn nhập giá của sản phẩm");
-                        cost = Integer.parseInt(scanner.nextLine());
-                        System.out.println("Mời bạn nhâp cân nặng của sản phẩm");
-                        weight = Integer.parseInt(scanner.nextLine());
-                        p.setId(id2);
-                        p.setName(name);
-                        p.setManufacturingDate(time.now().plusDays(month));
-                        p.setCost(cost);
-                        ((Meat) p).setWeight(weight);
-                        check=false;
-                    }
+        System.out.println("Mời bạn nhập ID sản phẩm bạn muốn sửa");
+        id = scanner.nextLine();
+        for (Material p : list) {
+            if (id.equals(p.getId())) {
+                if (p instanceof CrispyFlour) {
+                    System.out.println("Mời bạn nhập ID của sản phẩm sửa thành ");
+                    id2 = scanner.nextLine();
+                    System.out.println("Mời bạn nhập tên của sản phẩm sửa thành");
+                    name = scanner.nextLine();
+                    System.out.println("Mời bạn nhập thời gian hết hạn của sản phẩm sửa thành ");
+                    month = Integer.parseInt(scanner.nextLine());
+                    System.out.println("Mời bạn nhập giá của sản phẩm sửa thành");
+                    cost = Integer.parseInt(scanner.nextLine());
+                    System.out.println("Mời bạn nhập số lượng của sản phẩm sửa thành");
+                    quantity = Integer.parseInt(scanner.nextLine());
+                    p.setId(id2);
+                    p.setName(name);
+                    p.setManufacturingDate(time.now().minusMonths(month));
+                    p.setCost(cost);
+                    ((CrispyFlour) p).setQuantity(quantity);
+                } else if (p instanceof Meat) {
+                    System.out.println("Mời bạn nhập ID của sản phẩm ");
+                    id2 = scanner.nextLine();
+                    System.out.println("Mời bạn nhập tên của sản phẩm");
+                    name = scanner.nextLine();
+                    System.out.println("Mời bạn nhập thời gian hết hạn của sản phẩm ");
+                    month = Integer.parseInt(scanner.nextLine());
+                    System.out.println("Mời bạn nhập giá của sản phẩm");
+                    cost = Integer.parseInt(scanner.nextLine());
+                    System.out.println("Mời bạn nhâp cân nặng của sản phẩm");
+                    weight = Integer.parseInt(scanner.nextLine());
+                    p.setId(id2);
+                    p.setName(name);
+                    p.setManufacturingDate(time.now().plusDays(month));
+                    p.setCost(cost);
+                    ((Meat) p).setWeight(weight);
                 }
             }
         }
-    public void deleteById(Scanner scanner){
+    }
+
+    public void deleteById(Scanner scanner) {
         String id;
         System.out.println("Mời bạn nhập id sản phẩm muốn xóa");
-        id=scanner.nextLine();
-        for (Material p:list) {
-            if (id.equals(p.getId())){
+        id = scanner.nextLine();
+        for (Material p : list) {
+            if (id.equals(p.getId())) {
                 list.remove(p);
                 break;
             }
         }
     }
-}
 
+    public double getDifference() {
+        double total = 0;
+        for (Material p:list) {
+            total+=p.getCost() - p.getRealMoney();
+            System.out.println( "giá chênh lệch của sản phẩm là"+ total);
+        }
+
+        return total;
+    }
+}
